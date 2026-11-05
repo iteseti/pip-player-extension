@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "PiP Player — картинка в картинке",
+  "version": "1.0.0",
+  "description": "Картинка в картинке для любого видео: окно поверх всех окон с паузой, громкостью, полным экраном и настройками.",
+  "permissions": ["storage", "activeTab", "scripting", "contextMenus"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["pip.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}

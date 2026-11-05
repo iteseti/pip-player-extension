@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Настройки PiP Player</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 18px;
+      font: 13px/1.5 system-ui, sans-serif;
+      background: #16181d;
+      color: #eee;
+    }
+    h1 { font-size: 15px; margin: 0 0 14px; }
+    label { display: flex; align-items: center; gap: 8px; margin: 10px 0; cursor: pointer; }
+    label select {
+      margin-left: auto;
+      background: #2a2d34; color: #eee;
+      border: 1px solid #444; border-radius: 6px; padding: 3px 6px;
+    }
+    .hint { color: #888; font-size: 11px; margin-top: 14px; }
+    kbd { background: #2a2d34; border-radius: 4px; padding: 1px 5px; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <h1>Настройки PiP Player</h1>
+
+  <label>Скорость по умолчанию
+    <select id="speed">
+      <option value="0.5">0.5×</option>
+      <option value="0.75">0.75×</option>
+      <option value="1" selected>1×</option>
+      <option value="1.25">1.25×</option>
+      <option value="1.5">1.5×</option>
+      <option value="2">2×</option>
+    </select>
+  </label>
+
+  <label>Режим кадра
+    <select id="fitMode">
+      <option value="contain" selected>Вписать (с полосами)</option>
+      <option value="cover">Заполнить (обрезка краёв)</option>
+    </select>
+  </label>
+
+  <label><input type="checkbox" id="autoButton" checked /> Кнопка PiP на видео</label>
+  <label><input type="checkbox" id="rememberVolume" /> Запоминать громкость</label>
+  <label><input type="checkbox" id="miniMode" /> Открывать в мини-режиме (без панели)</label>
+
+  <div class="hint">
+    Левый клик по иконке — открыть/закрыть PiP.<br />
+    На странице: <kbd>Alt</kbd>+<kbd>P</kbd>.<br />
+    В окне PiP: <kbd>Space</kbd> пауза, <kbd>M</kbd> звук, <kbd>F</kbd> развернуть на весь экран,
+    <kbd>C</kbd> режим кадра, <kbd>←</kbd><kbd>→</kbd> ±5 с
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

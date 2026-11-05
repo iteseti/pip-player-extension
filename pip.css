@@ -1,0 +1,154 @@
+/* PiP Player */
+
+/* плавающая кнопка на странице */
+#pip-player-btn {
+  position: absolute;
+  z-index: 2147483647;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.75);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+#pip-player-btn.pip-visible { opacity: 1; pointer-events: auto; }
+#pip-player-btn:hover { background: rgba(60, 60, 60, 0.9); }
+
+/* уведомления */
+.pip-player-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  z-index: 2147483647;
+  background: rgba(24, 24, 28, 0.95);
+  color: #fff;
+  font: 13px/1.4 system-ui, sans-serif;
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  max-width: 420px;
+  text-align: center;
+}
+.pip-player-toast.pip-toast-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* большая центральная кнопка (когда нет жеста пользователя) */
+#pip-player-center-btn {
+  position: absolute;
+  z-index: 2147483647;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(20, 20, 24, 0.92);
+  color: #fff;
+  font: 600 15px/1 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  animation: pip-center-pulse 1.6s ease-in-out infinite;
+}
+#pip-player-center-btn:hover { background: rgba(226, 51, 51, 0.95); animation: none; }
+@keyframes pip-center-pulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 0 0 rgba(226, 51, 51, 0.55); }
+  50% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 0 14px rgba(226, 51, 51, 0); }
+}
+
+/* заглушка на месте перенесённого видео */
+.pip-player-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  width: 100%;
+  background: #111;
+  color: #aaa;
+  font: 14px/1.4 system-ui, sans-serif;
+  border-radius: 8px;
+}
+
+/* окно PiP */
+.pip-player-body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.pip-player-video {
+  flex: 1 1 auto;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0;
+  object-fit: contain;
+  background: #000;
+}
+
+/* панель контролов */
+.pip-controls {
+  flex: 0 0 auto;
+  background: rgba(24, 24, 24, 0.95);
+  color: #fff;
+  padding: 4px 8px 6px;
+  font: 12px/1.4 system-ui, sans-serif;
+  user-select: none;
+}
+.pip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.pip-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+.pip-btn:hover { background: rgba(255, 255, 255, 0.15); }
+.pip-time { min-width: 82px; text-align: center; color: #ccc; }
+
+.pip-seek {
+  width: 100%;
+  height: 4px;
+  accent-color: #e33;
+  cursor: pointer;
+}
+.pip-volume {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.pip-volume input[type='range'] {
+  width: 70px;
+  accent-color: #fff;
+  cursor: pointer;
+}
+.pip-speed {
+  background: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 2px 4px;
+  cursor: pointer;
+}
